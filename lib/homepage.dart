@@ -19,33 +19,48 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            BlocBuilder<CounterCubit, CounterState>(
-              builder: (context, state) {
-                if (state.counterValue < 0) {
+      body: BlocListener<CounterCubit, CounterState>(
+        listener: (context, state) {
+          if (state.wasChanged == true) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Yes, You Added +1'), duration:
+              Duration (milliseconds: 300)),
+            );
+          } else if (state.wasChanged == false) {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text('Yes, You '
+                    'Subtracted -1'), duration:
+            Duration (milliseconds: 300),));
+          }
+        },
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text(
+                'You have pushed the button this many times:',
+              ),
+              BlocBuilder<CounterCubit, CounterState>(
+                builder: (context, state) {
+                  if (state.counterValue < 0) {
+                    return Text(
+                      'Negative Life ' + state.counterValue.toString(),
+                      style: Theme.of(context).textTheme.headline4,
+                    );
+                  } else if (state.counterValue % 2 == 0) {
+                    return Text(
+                      ' Magic ' + state.counterValue.toString(),
+                      style: Theme.of(context).textTheme.headline4,
+                    );
+                  }
                   return Text(
-                    'Negative Life ' + state.counterValue.toString(),
-                    style: Theme.of(context).textTheme.headline1,
+                    state.counterValue.toString(),
+                    style: Theme.of(context).textTheme.headline4,
                   );
-                } else if (state.counterValue % 2 == 0) {
-                  return Text(
-                    ' Magic ' + state.counterValue.toString(),
-                    style: Theme.of(context).textTheme.headline1,
-                  );
-                }
-                return Text(
-                  state.counterValue.toString(),
-                  style: Theme.of(context).textTheme.headline4,
-                );
-              },
-            ),
-          ],
+                },
+              ),
+            ],
+          ),
         ),
       ),
       floatingActionButton: Row(
