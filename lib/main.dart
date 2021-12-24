@@ -1,9 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:testing_bloc_concept/presentation/screens/home_screen.dart';
-import 'package:testing_bloc_concept/presentation/screens/second_screen.dart';
-import 'package:testing_bloc_concept/presentation/screens/third_screen.dart';
+import 'package:testing_bloc_concept/presentation/router/app_router.dart';
 
 import 'business_logic/cubit_bloc/counter_cubit.dart';
 
@@ -25,7 +23,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final CounterCubit _counterCubit = CounterCubit();
+  final MyAppRouter _myAppRouter = MyAppRouter();
 
   // const MyApp({Key? key}) : super(key: key);
   @override
@@ -38,41 +36,42 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           primarySwatch: Colors.red,
         ),
+        onGenerateRoute: _myAppRouter.onGenerateRoutes,
         // home: BlocProvider<CounterCubit>(
         //   create: (context) => CounterCubit(),
         //   child: const HomeScreen(
         //       title: 'TD Bloc Demo 2021', color: Colors.redAccent),
         // ),
-        routes: {
-          '/': (context) => BlocProvider.value(
-                value: _counterCubit,
-                child: const HomeScreen(
-                  title: 'Home Bloc Demo 2022',
-                  color: Colors.blueAccent,
-                ),
-              ),
-          '/second': (context) => BlocProvider.value(
-                value: _counterCubit,
-                child: const SecondScreen(
-                  color: Colors.purpleAccent,
-                  title: 'Second',
-                ),
-              ),
-          '/third': (context) => BlocProvider.value(
-                value: _counterCubit,
-                child: const ThirdScreen(
-                  color: Colors.greenAccent,
-                  title: 'Third',
-                ),
-              )
-        },
+        // routes: {
+        //   '/': (context) => BlocProvider.value(
+        //         value: _counterCubit,
+        //         child: const HomeScreen(
+        //           title: 'Home Bloc Demo 2022',
+        //           color: Colors.blueAccent,
+        //         ),
+        //       ),
+        //   '/second': (context) => BlocProvider.value(
+        //         value: _counterCubit,
+        //         child: const SecondScreen(
+        //           color: Colors.purpleAccent,
+        //           title: 'Second',
+        //         ),
+        //       ),
+        //   '/third': (context) => BlocProvider.value(
+        //         value: _counterCubit,
+        //         child: const ThirdScreen(
+        //           color: Colors.greenAccent,
+        //           title: 'Third',
+        //         ),
+        //       )
+        // },
       ),
     );
   }
 
   @override
   void dispose() {
-    _counterCubit.close();
+    _myAppRouter.dispose();
     super.dispose();
   }
 }
