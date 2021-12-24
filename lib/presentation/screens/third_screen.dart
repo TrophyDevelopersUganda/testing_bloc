@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../business_logic/cubit_bloc/counter_cubit.dart';
+import 'package:testing_bloc_concept/business_logic/cubit_bloc/counter_cubit.dart';
 
 class ThirdScreen extends StatefulWidget {
   final Color color;

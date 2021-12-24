@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:testing_bloc_concept/screens/second_screen.dart';
-import 'package:testing_bloc_concept/screens/third_screen.dart';
+import 'package:testing_bloc_concept/presentation/screens/home_screen.dart';
+import 'package:testing_bloc_concept/presentation/screens/second_screen.dart';
+import 'package:testing_bloc_concept/presentation/screens/third_screen.dart';
 
 import 'business_logic/cubit_bloc/counter_cubit.dart';
-import 'screens/home_screen.dart';
 
 void main() {
   const counterState1 = CounterState(counterValue: 4, wasChanged: true);

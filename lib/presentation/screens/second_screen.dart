@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../business_logic/cubit_bloc/counter_cubit.dart';
+import 'package:testing_bloc_concept/business_logic/cubit_bloc/counter_cubit.dart';
 
 class SecondScreen extends StatefulWidget {
   final Color color;
@@ -55,10 +54,27 @@ class _SecondScreenState extends State<SecondScreen> {
                         duration: Duration(milliseconds: 300)),
                   );
                 } else if (state.wasChanged == false) {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                    content: Text('Yes, You '
-                        'Subtracted 4'),
-                    duration: Duration(milliseconds: 300),
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: RichText(
+                        text: TextSpan(
+                            style: const TextStyle(
+                                color: Colors.white, fontSize: 16),
+                            children: [
+                          const TextSpan(text: 'For 2 '),
+                          WidgetSpan(
+                            child: Transform.translate(
+                              offset: const Offset(4.0, 0.0),
+                              child: const Text(
+                                'nd',
+                                style: TextStyle(fontSize: 11),
+                              ),
+                            ),
+                          ),
+                          const TextSpan(
+                            text: ' Screen  Yes, You Subtracted ',
+                          ),
+                        ])),
+                    duration: const Duration(milliseconds: 300),
                   ));
                 }
               },
