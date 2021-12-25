@@ -11,7 +11,11 @@ environment:
 
 dependencies:
   bloc_test: ^9.0.1
+  connectivity: ^3.0.6
   equatable: ^2.0.3
+
+  connectivity_plus: "^2.0.2"
+
   flutter:
     sdk: flutter
   #  cupertino_icons: ^1.0.2
