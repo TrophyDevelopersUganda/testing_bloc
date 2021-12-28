@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021.  Trophy Developers Uganda. All Rights Reserved
+ Copyright (c) 2021.  Trophy Developers Uganda [https://www.trophydevelopers.com/mobile-application-development-uganda/]. All Rights Reserved
  */
 
 import 'package:connectivity_plus/connectivity_plus.dart';
@@ -14,16 +14,19 @@ import 'business_logic/cubit_bloc/internet_cubit.dart';
 import 'business_logic/cubit_bloc/settings_cubit.dart';
 
 void main() async {
+  /// https://stackoverflow.com/questions/68911012/hydrated-bloc-the-parameter-storagedirectory-is-required/70497643#70497643
   WidgetsFlutterBinding.ensureInitialized();
 
   final storage = await HydratedStorage.build(
     storageDirectory: await getApplicationDocumentsDirectory(),
   );
-
-  runApp(MyApp(
-    appRouter: AppRouter(),
-    connectivity: Connectivity(),
-  ));
+  HydratedBlocOverrides.runZoned(
+    () => runApp(MyApp(
+      appRouter: AppRouter(),
+      connectivity: Connectivity(),
+    )),
+    storage: storage,
+  );
 }
 
 class MyApp extends StatelessWidget {
