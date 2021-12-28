@@ -1,4 +1,4 @@
-/*
+  /*
  Copyright (c) 2021.  Trophy Developers Uganda. All Rights Reserved
  */
 
@@ -17,6 +17,7 @@ class SettingsCubit extends Cubit<SettingsState> {
         );
 
   void toggleAppNotifications(bool newValue) {
+    ///! You SHOULD NEVER MUTATE EXISTING STATES!!
     emit(state.copyWith(appNotifications: newValue, emailNotifications: false));
   }
 
