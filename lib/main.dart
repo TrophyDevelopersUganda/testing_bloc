@@ -1,12 +1,25 @@
+/*
+ Copyright (c) 2021.  Trophy Developers Uganda. All Rights Reserved
+ */
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hydrated_bloc/hydrated_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:testing_bloc_concept/presentation/router/app_router.dart';
 
 import 'business_logic/cubit_bloc/counter_cubit.dart';
 import 'business_logic/cubit_bloc/internet_cubit.dart';
+import 'business_logic/cubit_bloc/settings_cubit.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final storage = await HydratedStorage.build(
+    storageDirectory: await getApplicationDocumentsDirectory(),
+  );
+
   runApp(MyApp(
     appRouter: AppRouter(),
     connectivity: Connectivity(),
@@ -27,17 +40,20 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<InternetCubit>(
-          create: (context) => InternetCubit(
+          create: (internetCubitContext) => InternetCubit(
             connectivity: connectivity,
           ),
         ),
         BlocProvider<CounterCubit>(
-          create: (context) => CounterCubit(),
+          create: (counterCubitContext) => CounterCubit(),
+        ),
+        BlocProvider<SettingsCubit>(
+          create: (settingsCubitContext) => SettingsCubit(),
         ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
+        title: 'Trophy Developers App for Flutter Bloc Concepts',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,

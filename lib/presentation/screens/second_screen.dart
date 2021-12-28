@@ -1,3 +1,7 @@
+/*
+ Copyright (c) 2021.  Trophy Developers Uganda. All Rights Reserved
+ */
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testing_bloc_concept/business_logic/cubit_bloc/counter_cubit.dart';
@@ -22,8 +26,7 @@ class _SecondScreenState extends State<SecondScreen> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(
           children: <Widget>[
             const Text(
               'You have pushed the button this many times:',
