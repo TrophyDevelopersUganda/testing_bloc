@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:testing_bloc_concept/business_logic/utility/app_bloc_observer.dart';
 import 'package:testing_bloc_concept/presentation/router/app_router.dart';
 
 import 'business_logic/cubit_bloc/counter_cubit.dart';
@@ -26,6 +27,7 @@ void main() async {
       connectivity: Connectivity(),
     )),
     storage: storage,
+    blocObserver: AppBlocObserver(),
   );
 }
 
@@ -56,7 +58,8 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Trophy Developers App for Flutter Bloc Concepts',
+        title:
+            'Trophy Developers Mobile Application Using Flutter Bloc Concepts',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,

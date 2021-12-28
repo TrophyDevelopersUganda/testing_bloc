@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021.  Trophy Developers Uganda. All Rights Reserved
+ Copyright (c) 2021.  Trophy Developers Uganda [https://www.trophydevelopers.com/mobile-application-development-uganda/]. All Rights Reserved
  */
 
 part of 'settings_cubit.dart';
@@ -28,4 +28,9 @@ class SettingsState extends Equatable {
         emailNotifications,
         appNotifications,
       ];
+
+  @override
+  String toString() {
+    return 'SettingsState{appNotifications: $appNotifications, emailNotifications: $emailNotifications}';
+  }
 }
