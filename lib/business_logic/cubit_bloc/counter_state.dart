@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021.  Trophy Developers Uganda. All Rights Reserved
+ Copyright (c) 2021.  Trophy Developers Uganda [https://www.trophydevelopers.com/mobile-application-development-uganda/]. All Rights Reserved
  */
 
 part of 'counter_cubit.dart';
@@ -34,4 +34,9 @@ class CounterState extends Equatable {
 
   factory CounterState.fromJson(String source) =>
       CounterState.fromMap(json.decode(source));
+
+  @override
+  String toString() {
+    return 'CounterState{counterValue: $counterValue, wasChanged: $wasChanged}';
+  }
 }

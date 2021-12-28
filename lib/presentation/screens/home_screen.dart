@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021.  Trophy Developers Uganda. All Rights Reserved
+ Copyright (c) 2021.  Trophy Developers Uganda [https://www.trophydevelopers.com/mobile-application-development-uganda/]. All Rights Reserved
  */
 
 import 'package:flutter/material.dart';
@@ -28,8 +28,9 @@ class _HomeScreenState extends State<HomeScreen> {
         title: Text(widget.title),
         actions: [
           IconButton(
-              icon: const Icon(Icons.settings),
-              onPressed: () => Navigator.pushNamed(context, '/settings')),
+            icon: const Icon(Icons.settings),
+            onPressed: () => Navigator.pushNamed(context, '/settings'),
+          ),
         ],
       ),
       body: Center(
@@ -41,32 +42,38 @@ class _HomeScreenState extends State<HomeScreen> {
                     state.connectionType == ConnectionType.wifi) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Switched on Wi-Fi',
-                      style: Theme.of(context).textTheme.headline5?.copyWith(
-                            color: Colors.green,
-                          ),
+                    child: Center(
+                      child: Text(
+                        'Switched on Wi-Fi',
+                        style: Theme.of(context).textTheme.headline5?.copyWith(
+                              color: Colors.blue,
+                            ),
+                      ),
                     ),
                   );
                 } else if (state is InternetConnected &&
                     state.connectionType == ConnectionType.mobile) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Switched on Mobile Data',
-                      style: Theme.of(context).textTheme.headline5?.copyWith(
-                            color: Colors.red,
-                          ),
+                    child: Center(
+                      child: Text(
+                        'Switched on Mobile Data',
+                        style: Theme.of(context).textTheme.headline5?.copyWith(
+                              color: Colors.green,
+                            ),
+                      ),
                     ),
                   );
                 } else if (state is InternetDisconnected) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Disconnected',
-                      style: Theme.of(context).textTheme.headline3?.copyWith(
-                            color: Colors.grey,
-                          ),
+                    child: Center(
+                      child: Text(
+                        'Disconnected',
+                        style: Theme.of(context).textTheme.headline3?.copyWith(
+                              color: Colors.red,
+                            ),
+                      ),
                     ),
                   );
                 }
@@ -99,32 +106,50 @@ class _HomeScreenState extends State<HomeScreen> {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      'BRR, NEGATIVE ' + state.counterValue.toString(),
+                      'Va Mu Negative Musiru gwe ' +
+                          state.counterValue.toString(),
                       style: Theme.of(context).textTheme.headline4,
+                    ),
+                  );
+                } else if (state.counterValue + 1 == 0) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(
+                      child: Text(
+                        'Olds only : ' + state.counterValue.toString(),
+                        style: Theme.of(context).textTheme.headline4,
+                      ),
                     ),
                   );
                 } else if (state.counterValue % 2 == 0) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'Taps ' + state.counterValue.toString(),
-                      style: Theme.of(context).textTheme.headline5,
+                    child: Center(
+                      child: Text(
+                        'Eno Even Number: ' + state.counterValue.toString(),
+                        style: Theme.of(context).textTheme.headline4,
+                      ),
                     ),
                   );
-                } else if (state.counterValue == 5) {
+                } else if (state.counterValue == 3) {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'HMM, NUMBER 5',
-                      style: Theme.of(context).textTheme.headline4,
+                    child: Center(
+                      child: Text(
+                        'Ottera zinnya mirundi: ' +
+                            (state.counterValue.toString()),
+                        style: Theme.of(context).textTheme.headline4,
+                      ),
                     ),
                   );
                 } else {
                   return Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      state.counterValue.toString(),
-                      style: Theme.of(context).textTheme.headline4,
+                    child: Center(
+                      child: Text(
+                        state.counterValue.toString(),
+                        style: Theme.of(context).textTheme.headline4,
+                      ),
                     ),
                   );
                 }
@@ -140,32 +165,38 @@ class _HomeScreenState extends State<HomeScreen> {
                   internetState.connectionType == ConnectionType.mobile) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    'Counter: ' +
-                        counterState.counterValue.toString() +
-                        ' Internet: Mobile ',
-                    style: Theme.of(context).textTheme.headline6,
+                  child: Center(
+                    child: Text(
+                      'Counter: ' +
+                          counterState.counterValue.toString() +
+                          ' Internet: Mobile ',
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
                   ),
                 );
               } else if (internetState is InternetConnected &&
                   internetState.connectionType == ConnectionType.wifi) {
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    ' Counter: ' +
-                        counterState.counterValue.toString() +
-                        ' Internet: Wifi ',
-                    style: Theme.of(context).textTheme.headline6,
+                  child: Center(
+                    child: Text(
+                      ' Counter: ' +
+                          counterState.counterValue.toString() +
+                          ' Internet: Wifi ',
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
                   ),
                 );
               } else {
                 return Padding(
                   padding: const EdgeInsets.all(24.0),
-                  child: Text(
-                    ' Counter: ' +
-                        counterState.counterValue.toString() +
-                        ' Internet : Sorry Disconnected ',
-                    style: Theme.of(context).textTheme.headline6,
+                  child: Center(
+                    child: Text(
+                      ' Counter: ' +
+                          counterState.counterValue.toString() +
+                          ' Internet : Sorry Disconnected ',
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
                   ),
                 );
               }
@@ -215,7 +246,7 @@ class _HomeScreenState extends State<HomeScreen> {
             Padding(
               padding: const EdgeInsets.all(24.0),
               child: MaterialButton(
-                color: Colors.greenAccent,
+                color: Colors.black54,
                 child: const Text(
                   'Go to Third Screen',
                   style: TextStyle(color: Colors.white),

@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021.  Trophy Developers Uganda. All Rights Reserved
+ Copyright (c) 2021.  Trophy Developers Uganda [https://www.trophydevelopers.com/mobile-application-development-uganda/]. All Rights Reserved
  */
 
 import 'package:flutter/material.dart';
@@ -22,14 +22,14 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const SecondScreen(
             title: "Second Screen",
-            color: Colors.redAccent,
+            color: Colors.purple,
           ),
         );
       case '/third':
         return MaterialPageRoute(
           builder: (_) => const ThirdScreen(
             title: "Thirst Screen",
-            color: Colors.greenAccent,
+            color: Colors.black54,
           ),
         );
       case '/settings':

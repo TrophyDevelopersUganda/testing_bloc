@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021.  Trophy Developers Uganda. All Rights Reserved
+ Copyright (c) 2021.  Trophy Developers Uganda [https://www.trophydevelopers.com/mobile-application-development-uganda/]. All Rights Reserved
  */
 
 import 'package:flutter/material.dart';
@@ -29,7 +29,7 @@ class _SecondScreenState extends State<SecondScreen> {
         child: ListView(
           children: <Widget>[
             const Text(
-              'You have pushed the button this many times:',
+              'You have Tapped the Increment or Decremented, Results',
             ),
             BlocConsumer<CounterCubit, CounterState>(
               listener: (context, state) {
@@ -51,19 +51,28 @@ class _SecondScreenState extends State<SecondScreen> {
               },
               builder: (context, state) {
                 if (state.counterValue < 0) {
-                  return Text(
-                    'BRR, NEGATIVE ' + state.counterValue.toString(),
-                    style: Theme.of(context).textTheme.headline4,
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      ' Negative Thoughts ' + state.counterValue.toString(),
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
                   );
-                } else if (state.counterValue % 2 == 0) {
-                  return Text(
-                    'YAAAY ' + state.counterValue.toString(),
-                    style: Theme.of(context).textTheme.headline4,
+                } else if (state.counterValue == 0) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'Zero to Hero ' + state.counterValue.toString(),
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
                   );
                 } else if (state.counterValue == 5) {
-                  return Text(
-                    'HMM, NUMBER 5',
-                    style: Theme.of(context).textTheme.headline4,
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'HMM, NUMBER 5',
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
                   );
                 } else {
                   return Text(
@@ -104,15 +113,18 @@ class _SecondScreenState extends State<SecondScreen> {
             const SizedBox(
               height: 24,
             ),
-            MaterialButton(
-              color: Colors.greenAccent,
-              child: const Text(
-                'Go to Third Screen',
-                style: TextStyle(color: Colors.white),
+            Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: MaterialButton(
+                color: Colors.black,
+                child: const Text(
+                  'Go to Third Screen',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  Navigator.of(context).pushNamed('/third');
+                },
               ),
-              onPressed: () {
-                Navigator.of(context).pushNamed('/third');
-              },
             ),
           ],
         ),

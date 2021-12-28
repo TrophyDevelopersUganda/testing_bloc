@@ -1,10 +1,11 @@
 /*
- Copyright (c) 2021.  Trophy Developers Uganda. All Rights Reserved
+ Copyright (c) 2021.  Trophy Developers Uganda [https://www.trophydevelopers.com/mobile-application-development-uganda/]. All Rights Reserved
  */
 
 import 'dart:convert';
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 part 'counter_state.dart';
@@ -26,6 +27,24 @@ class CounterCubit extends Cubit<CounterState> with HydratedMixin {
 
   @override
   Map<String, dynamic>? toJson(CounterState state) {
+    addError(
+        Exception("Couldn't write to the device storage!"), StackTrace.current);
     return state.toMap();
+  }
+
+  @override
+  void onChange(Change<CounterState> change) {
+    if (kDebugMode) {
+      print(change);
+    }
+    super.onChange(change);
+  }
+
+  @override
+  void onError(Object error, StackTrace stackTrace) {
+    if (kDebugMode) {
+      print("$error, $stackTrace");
+    }
+    super.onError(error, stackTrace);
   }
 }

@@ -1,28 +1,20 @@
 name: testing_bloc_concept
 description: Business Logic Concept in Our Mobile Application Development in Uganda
-
 publish_to: 'none' # Remove this line if you wish to publish to
-
-
 version: 1.0.0+1
-
 environment:
   sdk: ">=2.15.1 <3.0.0"
-
 dependencies:
   bloc_test: ^9.0.1
   connectivity: ^3.0.6
   equatable: ^2.0.3
   connectivity_plus: "^2.0.2"
-
-
   flutter:
     sdk: flutter
   #  cupertino_icons: ^1.0.2
   flutter_bloc: ^8.0.0
   hydrated_bloc: ^8.0.0
   path_provider: ^2.0.8
-
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,10 +1,12 @@
 /*
- Copyright (c) 2021.  Trophy Developers Uganda. All Rights Reserved
+ Copyright (c) 2021.  Trophy Developers Uganda [https://www.trophydevelopers.com/mobile-application-development-uganda/]. All Rights Reserved
  */
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:testing_bloc_concept/business_logic/cubit_bloc/counter_cubit.dart';
+
+import 'home_screen.dart';
 
 class ThirdScreen extends StatefulWidget {
   const ThirdScreen({Key? key, required this.title, required this.color})
@@ -28,8 +30,12 @@ class _ThirdScreenState extends State<ThirdScreen> {
       body: Center(
         child: ListView(
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Text(
+                'You have Incremented or Decremented, See Results:',
+                style: Theme.of(context).textTheme.headline4,
+              ),
             ),
             BlocConsumer<CounterCubit, CounterState>(
               listener: (context, state) {
@@ -51,19 +57,28 @@ class _ThirdScreenState extends State<ThirdScreen> {
               },
               builder: (context, state) {
                 if (state.counterValue < 0) {
-                  return Text(
-                    'BRR, NEGATIVE ' + state.counterValue.toString(),
-                    style: Theme.of(context).textTheme.headline4,
+                  return Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Text(
+                      ' Negate to Forget  ' + state.counterValue.toString(),
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
                   );
                 } else if (state.counterValue % 2 == 0) {
-                  return Text(
-                    'YAYEEE ' + state.counterValue.toString(),
-                    style: Theme.of(context).textTheme.headline4,
+                  return Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Text(
+                      'Yeah ye ' + state.counterValue.toString(),
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
                   );
                 } else if (state.counterValue == 5) {
-                  return Text(
-                    'HMM, NUMBER 5',
-                    style: Theme.of(context).textTheme.headline4,
+                  return Padding(
+                    padding: const EdgeInsets.all(24.0),
+                    child: Text(
+                      'HMM, NUMBER 5',
+                      style: Theme.of(context).textTheme.headline4,
+                    ),
                   );
                 } else {
                   return Text(
@@ -76,53 +91,54 @@ class _ThirdScreenState extends State<ThirdScreen> {
             const SizedBox(
               height: 24,
             ),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //   children: [
-            //     FloatingActionButton(
-            //       heroTag: Text(widget.title),
-            //       backgroundColor: widget.color,
-            //       onPressed: () {
-            //         BlocProvider.of<CounterCubit>(context).decrement();
-            //         // context.bloc<CounterCubit>().decrement();
-            //       },
-            //       tooltip: 'Decrement',
-            //       child: const Icon(Icons.remove),
-            //     ),
-            //     FloatingActionButton(
-            //       backgroundColor: widget.color,
-            //       heroTag: Text('${widget.title} 2nd'),
-            //       onPressed: () {
-            //         // BlocProvider.of<CounterCubit>(context).increment();
-            //         BlocProvider.of<CounterCubit>(context).decrement();
-            //       },
-            //       tooltip: 'Increment',
-            //       child: const Icon(Icons.add),
-            //     ),
-            //   ],
-            // ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                FloatingActionButton(
+                  heroTag: Text(widget.title),
+                  backgroundColor: widget.color,
+                  onPressed: () {
+                    BlocProvider.of<CounterCubit>(context).decrement();
+                  },
+                  tooltip: 'Decrement',
+                  child: const Icon(Icons.remove),
+                ),
+                FloatingActionButton(
+                  backgroundColor: widget.color,
+                  heroTag: Text('${widget.title} 2nd'),
+                  onPressed: () {
+                    BlocProvider.of<CounterCubit>(context).increment();
+                  },
+                  tooltip: 'Increment',
+                  child: const Icon(Icons.add),
+                ),
+              ],
+            ),
             const SizedBox(
               height: 24,
             ),
-            // MaterialButton(
-            //   color: widget.color,
-            //   child: Text(
-            //     'Go to Second Screen',
-            //     style: TextStyle(color: Colors.white),
-            //   ),
-            //   onPressed: () {
-            //     Navigator.of(context).push(
-            //       MaterialPageRoute<HomeScreen>(
-            //         builder: (context) {
-            //           return HomeScreen(
-            //             color: Colors.redAccent,
-            //             title: 'Second Screen',
-            //           );
-            //         },
-            //       ),
-            //     );
-            //   },
-            // ),
+            Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: MaterialButton(
+                color: widget.color,
+                child: const Text(
+                  'Go to Second Screen',
+                  style: TextStyle(color: Colors.white),
+                ),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute<HomeScreen>(
+                      builder: (context) {
+                        return const HomeScreen(
+                          color: Colors.redAccent,
+                          title: 'Second Screen',
+                        );
+                      },
+                    ),
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
