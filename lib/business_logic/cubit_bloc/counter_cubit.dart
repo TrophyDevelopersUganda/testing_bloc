@@ -1,5 +1,5 @@
 /*
- Copyright (c) 2021.  Trophy Developers Uganda [https://www.trophydevelopers.com/mobile-application-development-uganda/]. All Rights Reserved
+ Copyright (c) 2022.  Trophy Developers Uganda [https://www.trophydevelopers.com/mobile-application-development-uganda/]. All Rights Reserved
  */
 
 import 'dart:convert';
@@ -16,8 +16,9 @@ class CounterCubit extends Cubit<CounterState> with HydratedMixin {
   void increment() => emit(
       CounterState(counterValue: state.counterValue + 1, wasChanged: true));
 
-  void decrement() => emit(
-      CounterState(counterValue: state.counterValue - 1, wasChanged: false));
+  void decrement() =>
+      emit(
+          CounterState(counterValue: state.counterValue - 2, wasChanged: false));
 
   @override
   CounterState? fromJson(Map<String, dynamic> json) {
